@@ -9,6 +9,7 @@ const twitter = {
 		twitter.browser = await puppeteer.launch({
 			headless: true,
 			slowMo: 50,
+			args: ['--no-sandbox', '--disable-setuid-sandbox']
 		});
 
 		twitter.page = await twitter.browser.newPage();
@@ -56,6 +57,7 @@ const counter = {
 		counter.browser = await puppeteer.launch({
 			headless: true,
 			slowMo: 50,
+			args: ['--no-sandbox', '--disable-setuid-sandbox']
 		});
 
 		counter.page = await counter.browser.newPage();
