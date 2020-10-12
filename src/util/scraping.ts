@@ -15,21 +15,26 @@ const twitter = {
 		twitter.page = await twitter.browser.newPage();
 	},
 
-	getBio: async (username: string): Promise<string> => {
-		await twitter.page.goto(twitter.url + username, {waitUntil: 'networkidle2'});
-		await twitter.page.waitFor(1000);
+	getBio: async (username: string): Promise<any> => {
+		try {
+			await twitter.page.goto(twitter.url + username, {waitUntil: 'networkidle2'});
+			await twitter.page.waitFor(1000);
 
-		const users = await twitter.page.$$('div[data-testid="UserCell"]');
-		await users[0].click();
-		await twitter.page.keyboard.press(String.fromCharCode(13));
-		await twitter.page.waitFor(1000);
+			const users = await twitter.page.$$('div[data-testid="UserCell"]');
+			await users[0].click();
+			await twitter.page.keyboard.press(String.fromCharCode(13));
+			await twitter.page.waitFor(1000);
 
-		const data = await twitter.page.evaluate(() => {
-			const bioDOM = document.querySelector('div[data-testid="UserDescription"]>span');
-			const bio: string|null = bioDOM!.innerHTML == null ? '' : bioDOM!.innerHTML;
-			return bio;
-		});
-		return data;
+			const data = await twitter.page.evaluate(() => {
+				const bioDOM = document.querySelector('div[data-testid="UserDescription"]>span');
+				const bio: string|null = bioDOM!.innerHTML == null ? '' : bioDOM!.innerHTML;
+				return bio;
+			});
+			return data;
+		} catch (error) {
+			console.log(error);
+			twitter.close();
+		}
 	},
 
 	close: (): void => {
