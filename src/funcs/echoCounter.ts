@@ -16,14 +16,13 @@ import { scrapingCounter } from "../util/scraping";
 						📈OP.GGで${RegExp.$1}のカウンターチャンピオンを検索...
 						`
 					);
-					message.channel.send(() => {
-						for (let i=0; i<3; i++) {
-							return
+					for (let i=0; i<3; i++) {
+					message.channel.send(
 								`
 								${data[0][i]}: ${data[1][i]}
 								`
-						}
-					})
+								)
+							}
 					break;
 				}
 				default:
