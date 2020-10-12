@@ -1,8 +1,6 @@
 import { Client } from 'discord.js';
 
-import * as dotenv from "dotenv";
-const env = { ...(dotenv.config().parsed as any) };
-const TOKEN = env.TOKEN;
+const TOKEN = process.env.TOKEN;
 
 export const client = new Client();
 client.on('ready', () => {
