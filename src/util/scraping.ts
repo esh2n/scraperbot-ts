@@ -9,10 +9,11 @@ const twitter = {
 		twitter.browser = await puppeteer.launch({
 			headless: true,
 			slowMo: 50,
-			args: ['--no-sandbox']
+			args: ['--no-sandbox', '--disable-setuid-sandbox']
 		});
 
 		twitter.page = await twitter.browser.newPage();
+		await twitter.page.setDefaultNavigationTimeout(0);
 	},
 
 	getBio: async (username: string): Promise<any> => {
@@ -66,6 +67,7 @@ const counter = {
 		});
 
 		counter.page = await counter.browser.newPage();
+		await counter.page.setDefaultNavigationTimeout(0);
 	},
 
 	getCounter: async (champName: string): Promise<[]> => {
