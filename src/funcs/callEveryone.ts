@@ -1,33 +1,32 @@
 import { Message } from "discord.js";
 import { client } from '../index';
 
-import { scrapingBio } from "../util/scraping";
 
 ((): void => {
 	client.on('message', (message: Message) => {
-		(async (): Promise<void> => {
+		((): void => {
 			const content = message.content;
 			if (message.author.bot) return;
-			switch (true) {
-				case /^\/bio (.+)$/.test(content): {
-					const user = RegExp.$1;
+				if (content.includes("のまぼ")) {
 					message.channel.send(
 						`
-						📈Twitterで${user}の自己紹介を検索中...
-						`
-						);
-					const data = await scrapingBio(user);
-					message.channel.send(
-						`
-						> ${data}
+						🙇‍♂️ @everyone
+						> ${message.author.username}さんがノーマル募集中！
 						`
 					);
 					message.react('🥺');
-					break;
 				}
-				default:
-					break;
-			}
+
+				if (content.includes("ぱちぼ")) {
+					message.channel.send(
+						`
+						🙇‍♂️ @パチカス
+						> ${message.author.username}さんがパチンコ募集中！
+						`
+					);
+					message.react('🥺');
+				}
+
 		})();
 	});
 })();

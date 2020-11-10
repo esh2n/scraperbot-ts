@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("../index");
 const scraping_1 = require("../util/scraping");
+const getChampName_1 = require("../util/getChampName");
 (() => {
     index_1.client.on('message', (message) => {
         (async () => {
@@ -10,15 +11,18 @@ const scraping_1 = require("../util/scraping");
                 return;
             switch (true) {
                 case /^\/counter (.+)$/.test(content): {
-                    const data = await scraping_1.scrapingCounter(RegExp.$1);
+                    const champName = RegExp.$1;
+                    const fixedChampName = getChampName_1.getChampionName(champName);
                     message.channel.send(`
-						📈OP.GGで${RegExp.$1}のカウンターチャンピオンを検索...
+						📈OP.GGで${fixedChampName}のカウンターチャンピオンを検索中...
 						`);
+                    const data = await scraping_1.scrapingCounter(champName);
                     for (let i = 0; i < 3; i++) {
                         message.channel.send(`
-								${data[0][i]}: ${data[1][i]}
+								> ${i + 1}位: ${data[0][i]}: ${data[1][i]}
 								`);
                     }
+                    message.react('🥺');
                     break;
                 }
                 default:

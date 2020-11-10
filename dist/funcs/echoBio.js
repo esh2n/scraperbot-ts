@@ -10,13 +10,15 @@ const scraping_1 = require("../util/scraping");
                 return;
             switch (true) {
                 case /^\/bio (.+)$/.test(content): {
-                    const data = await scraping_1.scrapingBio(RegExp.$1);
+                    const user = RegExp.$1;
                     message.channel.send(`
-						📈Twitterで${RegExp.$1}の自己紹介を検索...
+						📈Twitterで${user}の自己紹介を検索中...
 						`);
+                    const data = await scraping_1.scrapingBio(user);
                     message.channel.send(`
-						${data}
+						> ${data}
 						`);
+                    message.react('🥺');
                     break;
                 }
                 default:
