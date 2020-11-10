@@ -9,7 +9,7 @@ const twitter = {
 		twitter.browser = await puppeteer.launch({
 			headless: true,
 			slowMo: 50,
-			args: ['--no-sandbox', '--disable-setuid-sandbox']
+			args: ['--no-sandbox']
 		});
 
 		twitter.page = await twitter.browser.newPage();
