@@ -25,7 +25,7 @@ const getSkinName_1 = require("../util/getSkinName");
             if (content.includes("ノマーボ")) {
                 const skinPrefix = getSkinName_1.getSkinName();
                 message.channel.send(`
-						🙇‍♂️ @パチカス
+						🙇‍♂️ @everyone
 						> ${skinPrefix + message.author.username}さんが${skinPrefix}ノマーボ募集中！
 						`);
                 message.react('🥺');

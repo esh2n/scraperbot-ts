@@ -33,7 +33,7 @@ import { getSkinName } from "../util/getSkinName";
 					const skinPrefix = getSkinName();
 					message.channel.send(
 						`
-						🙇‍♂️ @パチカス
+						🙇‍♂️ @everyone
 						> ${skinPrefix + message.author.username}さんが${skinPrefix}ノマーボ募集中！
 						`
 					);
