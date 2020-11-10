@@ -16,6 +16,7 @@ const twitter = {
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         twitter.page = await twitter.browser.newPage();
+        await twitter.page.setDefaultNavigationTimeout(0);
     },
     getBio: async (username) => {
         try {
@@ -59,6 +60,7 @@ const counter = {
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
         counter.page = await counter.browser.newPage();
+        await counter.page.setDefaultNavigationTimeout(0);
     },
     getCounter: async (champName) => {
         const champ = getChampName_1.getChampionName(champName);
