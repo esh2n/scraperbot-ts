@@ -1,6 +1,8 @@
 import { Message } from "discord.js";
 import { client } from '../index';
 
+import { getSkinName } from "../util/getSkinName";
+
 
 ((): void => {
 	client.on('message', (message: Message) => {
@@ -22,6 +24,17 @@ import { client } from '../index';
 						`
 						🙇‍♂️ @パチカス
 						> ${message.author.username}さんがパチンコ募集中！
+						`
+					);
+					message.react('🥺');
+				}
+
+				if (content.includes("ノマーボ")) {
+					const skinPrefix = getSkinName();
+					message.channel.send(
+						`
+						🙇‍♂️ @パチカス
+						> ${skinPrefix + message.author.username}さんが${skinPrefix}ノマーボ募集中！
 						`
 					);
 					message.react('🥺');

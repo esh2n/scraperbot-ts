@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("../index");
+const getSkinName_1 = require("../util/getSkinName");
 (() => {
     index_1.client.on('message', (message) => {
         (() => {
@@ -18,6 +19,14 @@ const index_1 = require("../index");
                 message.channel.send(`
 						🙇‍♂️ @パチカス
 						> ${message.author.username}さんがパチンコ募集中！
+						`);
+                message.react('🥺');
+            }
+            if (content.includes("ノマーボ")) {
+                const skinPrefix = getSkinName_1.getSkinName();
+                message.channel.send(`
+						🙇‍♂️ @パチカス
+						> ${skinPrefix + message.author.username}さんが${skinPrefix}ノマーボ募集中！
 						`);
                 message.react('🥺');
             }
