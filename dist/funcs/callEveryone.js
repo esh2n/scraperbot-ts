@@ -30,6 +30,14 @@ const getSkinName_1 = require("../util/getSkinName");
 						`);
                 message.react('🥺');
             }
+            if (content.includes("ノマンボウ") || content.includes("のまんぼう")) {
+                const sunfish = getSkinName_1.getSunfishAA();
+                message.channel.send(`
+						🙇‍♂️ @everyone
+						`);
+                message.channel.send(sunfish.map((row) => row));
+                message.react('🐟');
+            }
         })();
     });
 })();
