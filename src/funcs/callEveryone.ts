@@ -42,6 +42,9 @@ import { getSkinName, getSunfishAA } from "../util/getSkinName";
 
 				if (content.includes("ノマンボウ") || content.includes("のまんぼう")) {
 					const sunfish = getSunfishAA();
+					sunfish.map((row)=> {
+						console.log(row)
+					})
 					message.channel.send(
 						`
 						🙇‍♂️ @everyone
