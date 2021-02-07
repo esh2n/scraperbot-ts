@@ -1,7 +1,7 @@
 import { Message } from "discord.js";
 import { client } from '../index';
 
-import { getSkinName } from "../util/getSkinName";
+import { getSkinName, getSunfishAA } from "../util/getSkinName";
 
 
 ((): void => {
@@ -37,6 +37,23 @@ import { getSkinName } from "../util/getSkinName";
 						> ${skinPrefix + message.author.username}さんが${skinPrefix}ノマーボ募集中！
 						`
 					);
+					message.react('🥺');
+				}
+
+				if (content.includes("ノマンボウ") || content.includes("のまんぼう")) {
+					const sunfish = getSunfishAA();
+					message.channel.send(
+						`
+						🙇‍♂️ @everyone
+						`
+					);
+						sunfish.map((row)=> {
+							message.channel.send(
+								`
+								${row}
+								`
+							);
+						})
 					message.react('🥺');
 				}
 
