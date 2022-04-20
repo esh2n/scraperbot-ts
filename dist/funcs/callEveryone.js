@@ -8,7 +8,7 @@ const getSkinName_1 = require("../util/getSkinName");
             const content = message.content;
             if (message.author.bot)
                 return;
-            if (content.includes("のまぼ")) {
+            if (content.includes("のまぼ") || content.includes("のまをぼ") || content.includes("ラボ") || content.includes("おはぼ") || content.includes("ぼ！")) {
                 message.channel.send(`
 						🙇‍♂️ @everyone
 						> ${message.author.username}さんがノーマル募集中！
