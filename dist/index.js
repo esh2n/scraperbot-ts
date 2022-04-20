@@ -26,7 +26,7 @@ exports.client = void 0;
 const discord_js_1 = require("discord.js");
 const http_1 = __importDefault(require("http"));
 const querystring_1 = __importDefault(require("querystring"));
-const TOKEN = process.env.TOKEN;
+const TOKEN = "NzY0NzMwMjYzNzUzMTk1NTIw.X4Kgjg.cyrGi2QCSiibGEshI5BAkMoKrgw";
 http_1.default.createServer(function (req, res) {
     if (req.method == 'POST') {
         let data = "";

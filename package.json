@@ -4,15 +4,13 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "node ./dist/index.js",
+    "start": "yarn compile && node ./dist/index.js",
     "start:dev": "ts-node ./src/index.ts",
     "compile": "tsc -p .",
     "compile:test": "tsc -p . --noEmit",
     "lint": "eslint --ext .ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .ts --ignore-path .gitignore . --fix",
-    "test": "npm run lint && npm run compile:test",
-    "//": "Heroku Script",
-    "heroku-postbuild": "tsc -p ."
+    "test": "yarn lint && yarn compile:test"
   },
   "repository": {
     "type": "git",
@@ -21,23 +19,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shunyaendoh1215/scraperbot-ts/issues"
-  },
-  "homepage": "https://github.com/shunyaendoh1215/scraperbot-ts#readme",
   "dependencies": {
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
+    "ffmpeg-static": "^3.0.0",
     "puppeteer": "^2.0.0",
     "querystring": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^14.11.8",
+    "@types/puppeteer": "^2.0.0",
     "@types/ws": "^7.2.7",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "eslint": "^7.10.0",
-    "@types/puppeteer": "^2.0.0",
     "prettier": "^1.19.1",
     "ts-node": "^8.5.2",
     "typescript": "^4.0.3"
